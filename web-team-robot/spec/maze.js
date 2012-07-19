@@ -37,6 +37,28 @@ describe('maze', function() {
 		should.not.exist(locationResult);
 	});
 
+	it("should return E when only direction available", function(){
+		var maze;
+		var availableDirections = [];
+		var playerNumber = 1;
+		maze = new Maze(['1.']);
 
+		availableDirections = maze.getAvailableDirections(playerNumber);
+
+		availableDirections.should.deep.equal(['E']);
+	});
+
+	it("should return E and W when directions available", function(){
+		var maze;
+		var availableDirections = [];
+		var playerNumber = 1;
+		maze = new Maze(['.1.']);
+
+		availableDirections = maze.getAvailableDirections(playerNumber);
+
+		availableDirections.length.should.equal(2);
+		availableDirections.indexOf('E').should.be.greaterThan(-1);
+		availableDirections.indexOf('W').should.be.greaterThan(-1);
+	});
 });
 	
